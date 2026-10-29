@@ -1,0 +1,12 @@
+html
+    head
+        title Welcome to the User exhi
+        body
+        include ./headers
+        br
+        br
+        each user in users
+            a(href="/users/"+user._id) #{user.user}
+            br
+   
+

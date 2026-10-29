@@ -1,0 +1,12 @@
+html
+    head
+        title Welcome to the Artist exhi
+        body
+        include ./headers
+        br
+        br
+        each artist in artists
+            a(href="/artists/"+artist._id) #{artist.artist}
+            br
+   
+

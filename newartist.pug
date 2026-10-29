@@ -1,0 +1,22 @@
+html 
+    head 
+    title 
+
+body 
+    
+    form(action="/artist" method="post")
+        label(for="name")  Name: 
+        input(type="text" name="name")
+        label(for="artist")  Artist: 
+        input(type="text" name="artist")
+        label(for="year")  Year: 
+        input(type="text" name="year")
+        label(for="category")  Category: 
+        input(type="text" name="category")
+        label(for="medium")  Medium: 
+        input(type="text" name="medium")
+        label(for="description")  Description: 
+        input(type="text" name="description")
+        button(type="submit") Submit
+
+    script(src="/artistRouter.js")

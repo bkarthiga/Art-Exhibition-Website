@@ -1,0 +1,36 @@
+html 
+    head 
+    title 
+
+body 
+    include ./headers
+    br
+    br
+    form(action="/artworks" method="post")
+        label(for="name")  Name: 
+        input(type="text" name="name")
+        br
+        br
+        label(for="artist")  Artist: 
+        input(type="text" name="artist")
+        br
+        br
+        label(for="year")  Year: 
+        input(type="text" name="year")
+        br
+        br
+        label(for="category")  Category: 
+        input(type="text" name="category")
+        br
+        br
+        label(for="medium")  Medium: 
+        input(type="text" name="medium")
+        br
+        br
+        label(for="description")  Description: 
+        input(type="text" name="description")
+        br
+        br
+        button(type="submit") Submit
+
+    script(src="/artWorkRouter.js")

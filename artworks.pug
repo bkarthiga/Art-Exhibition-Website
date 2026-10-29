@@ -1,0 +1,12 @@
+html
+    head
+        title Welcome to the Artwork
+        body
+        include ./headers
+        br
+        br
+        each artwork in artworks
+            a(href="/artworks/"+artwork._id) #{artwork.name}
+            br
+   
+

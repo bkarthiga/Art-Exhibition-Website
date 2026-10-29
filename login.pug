@@ -1,0 +1,19 @@
+doctype html
+html(lang="en") 
+    title User Account
+    body 
+        include ./headers
+        h1 Login
+        hr
+        a(href='./gallery' class='user')
+        br
+        br
+        div(class='form')
+            | 
+            input(id='username-input' class='form-input' type='text' name='name' placeholder='Enter userName: ')
+            |           
+            input(id='password-input' class='form-input' type='text' name='password' placeholder='Enter passWord: ')
+            |
+            div(class'"form-button" onclick="login()") Login
+            br
+            script(src="./login.js")

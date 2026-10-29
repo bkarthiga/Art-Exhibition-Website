@@ -1,0 +1,15 @@
+doctype html
+html(lang="en") 
+    title Add a new User
+    body 
+        include ./headers
+        h1 Add a new User to Artwork
+        p
+            | First Name: 
+            input(type='text', id='firstName')
+            |          Last Name: 
+            input(type='text', id='lastName')
+            |          Age: 
+            input(type='text', id='age')
+            input(type='submit', id='addUser' value='Submit')
+            script(src="./userRouter.js")

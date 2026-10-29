@@ -1,0 +1,155 @@
+Project Report
+    
+    Purpose of this project is to create a web application to provide exhibition space for artists to showcase
+
+their work and connect artists with the community. This application will maintain a database of art
+
+items and will support two types of users: patrons and artists. Patrons can browse all the information on
+
+the site, add reviews and “likes” to artwork, “follow” artists, and join workshops. Artists will be able to
+
+add new artwork or host a workshop. 
+
+    First of all, web app build with express;"npm install express" , mongodb; npm install mongodb, pug; npm install pug,
+    
+use of http request, template engine rendering, initializing; node initializer.js ; then run my database and server.
+
+"node initialize.js" script in .zip.
+
+const express = require('express');
+let app = express();
+let fs = require('fs');
+let mongo = require('mongodb');
+let MongoClient = mongo.MongoClient;
+let db;
+
+let artWork = [];
+
+fs.readdir("./database",(err,files)=>{
+    if(err){
+        return console.log(err);
+    }
+    else{
+        for(let i=0; i<files.length; i++){
+            let file = require("./database/"+files[i]);
+            for (let j=0; j < file.length; ++j){
+                artWork.push(file[j])
+                console.log(file[j])
+            }
+        }
+    }
+});
+
+
+MongoClient.connect("mongodb://localhost:27017/",  function(err,client){
+
+    if (err)  throw err;
+
+    db = client.db('project')
+    app.locals.db=db;
+
+    app.locals.db.listCollections().toArray(function(err,result){
+        if(result.length==0){
+            app.locals.db.collection("artworks").insertMany(artWork, function(err,result){
+                if(err){
+                    throw err;
+                }
+                console.log(result.insertedCount)
+                client.close();
+
+            })
+            return;
+        }
+    })
+})
+
+created batabase a new MongoDB database from my updated gallery.json file with 12 Artworks, 
+
+this database can add/remove/update the keys and values.
+
+This database ensures that a database with the data structure required by my project can be created during the grading
+
+process. 
+
+    Discussion : project critique of my overall design. The overall quality of this Project system's design and 
+    
+implementation are good. 
+File includes : 
+
+database 
+          - gallery.json
+Public
+          - addUser.js
+          - artistRouter.js
+          - artWorkRouter.js
+          - style.css - not use
+          -deleteUser.js
+          -register.js
+          - login.js
+          -userRouter.js
+
+views
+          - addUser.pug
+          - artist.pug
+          - artists.pug
+          - artwork.pug
+          - artworks.pug
+          - headers.pug
+          - home.pug
+          - login.pug
+          - newartist.pug
+          - newartwork.pug
+          - newuser.pug
+          - register.pug 
+          - user.pug
+          - users.pug
+
+initializer.js
+server.js
+README.txt
+Report.pdf 
+
+
+quality and organization and effective Use of RESTful design principles, use of proper HTTP status codes,
+
+proper error handling, use of asynchronous operations, minimization of required data transfer.
+
+good design/implementation properties are my home page has implemented easy to follow.
+
+Explanation of design decisions that route steps in header page. 
+
+Routes:
+Get/artworks
+    - renders the homepage with all artworks and details
+    - response is  html
+Get/artists
+    - renders the homepage with all arttists and details
+    - response is  html
+Get/users
+    - renders the homepage with all users and details
+    - response is  html
+
+
+Get/artwork/:id
+    - renders display artwork on seperate page
+    - response is  html
+Get/artist/:id
+    - renders display artist on seperate page
+    - response is  html
+Get/user/:id
+    - renders display user on seperate page
+    - response is  html
+
+Get/addArtwork
+    - renders display artwork on seperate page
+    - response is  html
+
+Post/
+    - create new Artwork
+    - create new Artist
+    - create new user
+
+
+youtube video link is
+
+" https://youtu.be/2VgY-fQv8Oc "
